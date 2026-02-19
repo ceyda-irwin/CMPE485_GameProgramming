@@ -108,3 +108,9 @@ InitTestScene*.unity*
 # Android keystore
 *.keystore
 *.jks
+
+
+HW0_Unity_Entry_Project/Library/
+HW0_Unity_Entry_Project/UserSettings/
+HW0_Unity_Entry_Project/Temp/
+HW0_Unity_Entry_Project/Obj/
