@@ -9,6 +9,8 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        if (ScoreManager.Instance != null && ScoreManager.Instance.IsGameOver)
+            return;
         if (Input.GetKeyDown(KeyCode.Alpha1)) Spawn(1);
         if (Input.GetKeyDown(KeyCode.Alpha2)) Spawn(2);
         if (Input.GetKeyDown(KeyCode.Alpha3)) Spawn(3);

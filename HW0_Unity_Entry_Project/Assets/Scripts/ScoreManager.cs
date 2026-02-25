@@ -1,37 +1,46 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
 
     [SerializeField] private TMP_Text scoreText;
-    private int score = 0;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private int winScore = 3;
 
+    private int score = 0;
+    public bool IsGameOver { get; private set; } = false;
+
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+        if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
         UpdateUI();
+        if (winPanel != null) winPanel.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (IsGameOver && Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void AddPoint(int amount)
     {
-    score += amount;
-    UpdateUI();
+        if (IsGameOver) return;
 
-    if (score >= winScore && winPanel != null)
-    {
-        winPanel.SetActive(true);
-        Time.timeScale = 0f; // oyunu durdurur
-    }
+        score += amount;
+        UpdateUI();
+
+        if (score >= winScore && winPanel != null)
+        {
+            IsGameOver = true;
+            winPanel.SetActive(true);
+        }
     }
 
     private void UpdateUI()
