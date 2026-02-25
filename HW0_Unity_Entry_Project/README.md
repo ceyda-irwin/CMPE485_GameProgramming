@@ -178,4 +178,4 @@ A short demonstration video has been uploaded to Moodle showing:
 
 ## 🛠 Unity Version
 
-Unity 6000.x (Built-in Render Pipeline)
+Unity 2022.3.62f3 (Built-in Render Pipeline)
