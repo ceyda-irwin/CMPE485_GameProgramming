@@ -7,6 +7,8 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] private TMP_Text scoreText;
     private int score = 0;
+    [SerializeField] private GameObject winPanel;
+    [SerializeField] private int winScore = 3;
 
     private void Awake()
     {
@@ -22,8 +24,14 @@ public class ScoreManager : MonoBehaviour
 
     public void AddPoint(int amount)
     {
-        score += amount;
-        UpdateUI();
+    score += amount;
+    UpdateUI();
+
+    if (score >= winScore && winPanel != null)
+    {
+        winPanel.SetActive(true);
+        Time.timeScale = 0f; // oyunu durdurur
+    }
     }
 
     private void UpdateUI()

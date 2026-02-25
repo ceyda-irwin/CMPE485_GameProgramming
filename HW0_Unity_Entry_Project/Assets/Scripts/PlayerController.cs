@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     [Header("Movement")]
-    [SerializeField] private float moveForce = 25f;
+    [SerializeField] private float moveForce = 10f;
     [SerializeField] private float maxSpeed = 8f;
 
     [Header("Homework 2.6: constant force every frame")]
