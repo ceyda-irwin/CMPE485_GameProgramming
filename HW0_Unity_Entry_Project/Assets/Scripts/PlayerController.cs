@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (ScoreManager.Instance != null && ScoreManager.Instance.IsGameOver)
+            return;
         if (rb == null) return;
 
         // 2.6: her frame sabit force
