@@ -114,3 +114,10 @@ HW0_Unity_Entry_Project/Library/
 HW0_Unity_Entry_Project/UserSettings/
 HW0_Unity_Entry_Project/Temp/
 HW0_Unity_Entry_Project/Obj/
+
+# HW1 Unity projesi - Library, Temp, UserSettings vs. yükleme
+HW1/Library/
+HW1/Temp/
+HW1/Obj/
+HW1/UserSettings/
+HW1/Logs/
