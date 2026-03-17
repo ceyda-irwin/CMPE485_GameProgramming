@@ -16,9 +16,7 @@ public class GameManager : MonoBehaviour
 
         if (winUI != null)
             winUI.SetActive(true);
-
-        // İstersen direkt reset de edebilirsin:
-        // Invoke(nameof(Reload), 3f);
+        Debug.Log("Win!");
     }
 
     public void Lose()
@@ -28,14 +26,22 @@ public class GameManager : MonoBehaviour
 
         if (loseUI != null)
             loseUI.SetActive(true);
-
-        // Ölümden sonra sahneyi resetle
-        // Biraz beklemek istersen:
-        Invoke(nameof(Reload), 2f);
+        Debug.Log("Lose!");
     }
 
-    public void Reload()
+    // UI butonları burayı çağıracak
+    public void OnRestartYes()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OnRestartNo()
+    {
+        // İstersen ana menü sahnesi yükleyebilirsin, şimdilik oyundan çık:
+        Application.Quit();
+        // Editor'de test için:
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }
