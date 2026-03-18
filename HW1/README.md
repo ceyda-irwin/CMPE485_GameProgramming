@@ -1,5 +1,8 @@
 # CMPE 485 — HW#1: Simple 3D Maze Escape Game (Unity URP)
 
+Video Link: https://youtu.be/rNLOUXIdHiM
+GitHub Link: https://github.com/ceyda-irwin/CMPE485_GameProgramming/tree/main/HW1/Assets
+
 ## Overview
 Third-person maze escape game. The player navigates a maze, finds/pushes a physics key, and wins by colliding the key with the door. Traps and guards can kill the player.
 
