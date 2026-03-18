@@ -74,6 +74,12 @@ mono_crash.*
 *.unitypackage.meta
 *.app
 
+# Videos (GitHub size limit)
+*.mov
+*.mp4
+*.mkv
+*.webm
+
 # Crashlytics generated file
 crashlytics-build.properties
 
