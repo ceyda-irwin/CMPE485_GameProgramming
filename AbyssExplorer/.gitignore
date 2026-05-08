@@ -1,0 +1,23 @@
+# Unity generated folders (do not commit)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# IDE folders
+.vs/
+.vscode/
+.idea/
+
+# Build artifacts
+[Bb]uild/
+[Bb]uilds/
+*.apk
+*.aab
+*.app
+
+# OS generated files
+.DS_Store
