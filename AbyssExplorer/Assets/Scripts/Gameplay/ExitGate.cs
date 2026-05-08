@@ -4,45 +4,43 @@ public class ExitGate : MonoBehaviour
 {
     public bool isUnlocked = false;
 
-    [Header("Materials")]
-    public Material lockedMaterial;
-    public Material unlockedMaterial;
+    [Header("Door Settings")]
+    public float openAngle = -90f;
+    public float openSpeed = 2f;
 
-    private Renderer gateRenderer;
+    private Quaternion closedRotation;
+    private Quaternion openRotation;
+
+    private bool opening = false;
 
     private void Start()
     {
-        gateRenderer = GetComponent<Renderer>();
+        closedRotation = transform.rotation;
 
-        if (lockedMaterial != null)
+        openRotation = Quaternion.Euler(
+            transform.eulerAngles.x,
+            transform.eulerAngles.y + openAngle,
+            transform.eulerAngles.z
+        );
+    }
+
+    private void Update()
+    {
+        if (opening)
         {
-            gateRenderer.material = lockedMaterial;
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                openRotation,
+                openSpeed * Time.deltaTime
+            );
         }
     }
 
     public void UnlockExit()
     {
         isUnlocked = true;
+        opening = true;
 
-        if (unlockedMaterial != null)
-        {
-            gateRenderer.material = unlockedMaterial;
-        }
-
-        Debug.Log("Gate is now open!");
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
-
-        if (isUnlocked)
-        {
-            GameManager.Instance.WinGame();
-        }
-        else
-        {
-            Debug.Log("Collect all items first!");
-        }
+        Debug.Log("Gate opening!");
     }
 }
