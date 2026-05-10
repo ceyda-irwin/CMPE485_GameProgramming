@@ -10,8 +10,13 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 2f;
     public Transform cameraTransform;
 
+    [Header("Vertical Limits")]
+    public float minY = 1f;
+    public float maxY = 25f;
+
     private Rigidbody rb;
     private float cameraPitch = 0f;
+
 
     void Start()
     {
@@ -43,6 +48,7 @@ public class PlayerController : MonoBehaviour
         }
 
         MovePlayer();
+        ClampVerticalPosition();
     }
 
     private void MovePlayer()
@@ -80,5 +86,16 @@ public class PlayerController : MonoBehaviour
         cameraPitch = Mathf.Clamp(cameraPitch, -75f, 75f);
 
         cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0f, 0f);
+    }
+    private void ClampVerticalPosition()
+
+    {
+
+        Vector3 pos = transform.position;
+
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+        transform.position = pos;
+
     }
 }

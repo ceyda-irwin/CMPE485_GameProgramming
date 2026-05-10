@@ -34,8 +34,11 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        string oxygenState = oxygenSystem.isAboveSurface ? "Refilling" : "Underwater";
+
         infoText.text =
             "Oxygen: " + Mathf.CeilToInt(oxygenSystem.currentOxygen) +
-            "\nRelics: " + GameManager.Instance.collectedCount + "/" + GameManager.Instance.totalCollectibles;
-    }
+            "\nRunes: " + GameManager.Instance.collectedCount + "/" + GameManager.Instance.totalCollectibles +
+            "\nState: " + oxygenState;
+        }
 }
