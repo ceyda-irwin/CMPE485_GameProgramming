@@ -17,4 +17,4 @@ public class ExitTrigger : MonoBehaviour
             Debug.Log("Door is locked!");
         }
     }
-}
+} 

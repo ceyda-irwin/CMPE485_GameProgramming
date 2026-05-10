@@ -13,7 +13,8 @@ public class OxygenSystem : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.gameEnded) return;
+        if (GameManager.Instance == null) return;
+        if (!GameManager.Instance.gameStarted || GameManager.Instance.gameEnded) return;
 
         currentOxygen -= oxygenDecreaseRate * Time.deltaTime;
         currentOxygen = Mathf.Clamp(currentOxygen, 0f, maxOxygen);

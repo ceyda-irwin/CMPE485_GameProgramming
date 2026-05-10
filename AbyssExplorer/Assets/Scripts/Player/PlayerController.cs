@@ -16,18 +16,32 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     void Update()
     {
+        if (GameManager.Instance != null)
+        {
+            if (!GameManager.Instance.gameStarted || GameManager.Instance.gameEnded)
+            {
+                return;
+            }
+        }
+
         LookAround();
     }
 
     void FixedUpdate()
     {
+        if (GameManager.Instance != null)
+        {
+            if (!GameManager.Instance.gameStarted || GameManager.Instance.gameEnded)
+            {
+                rb.velocity = Vector3.zero;
+                return;
+            }
+        }
+
         MovePlayer();
     }
 
