@@ -8,6 +8,12 @@ public class UIManager : MonoBehaviour
     [Header("UI")]
     public TMP_Text infoText;
 
+    [Header("Messages")]
+    public float defaultMessageDuration = 2f;
+
+    private string currentMessage = "";
+    private float messageTimer = 0f;
+
     [Header("References")]
     public OxygenSystem oxygenSystem;
 
@@ -19,6 +25,15 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         if (oxygenSystem == null || GameManager.Instance == null) return;
+
+        if (messageTimer > 0f)
+        {
+            messageTimer -= Time.deltaTime;
+            if (messageTimer <= 0f)
+            {
+                currentMessage = "";
+            }
+        }
 
         if (GameManager.Instance.gameEnded)
         {
@@ -35,10 +50,24 @@ public class UIManager : MonoBehaviour
         }
 
         string oxygenState = oxygenSystem.isAboveSurface ? "Refilling" : "Underwater";
+        string messageLine = string.IsNullOrEmpty(currentMessage) ? "" : currentMessage + "\n";
 
         infoText.text =
+            messageLine +
             "Oxygen: " + Mathf.CeilToInt(oxygenSystem.currentOxygen) +
             "\nRunes: " + GameManager.Instance.collectedCount + "/" + GameManager.Instance.totalCollectibles +
             "\nState: " + oxygenState;
-        }
+
+    }
+
+    public void ShowMessage(string message)
+    {
+        ShowMessage(message, defaultMessageDuration);
+    }
+
+    public void ShowMessage(string message, float duration)
+    {
+        currentMessage = message;
+        messageTimer = duration;
+    }
 }

@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = -1;
+
         if (Instance == null)
         {
             Instance = this;
@@ -73,6 +76,10 @@ public class GameManager : MonoBehaviour
         collectedCount++;
 
         Debug.Log("Collected: " + collectedCount + "/" + totalCollectibles);
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowMessage("Rune collected!");
+        }
 
         if (collectedCount >= totalCollectibles)
         {
@@ -84,6 +91,10 @@ public class GameManager : MonoBehaviour
     {
         exitUnlocked = true;
         Debug.Log("Exit unlocked!");
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowMessage("Exit unlocked!");
+        }
 
         if (exitGate != null)
         {

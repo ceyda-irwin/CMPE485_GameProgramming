@@ -7,6 +7,7 @@ public class ExitTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
+        if (gate == null) return;
 
         if (gate.isUnlocked)
         {
@@ -15,6 +16,10 @@ public class ExitTrigger : MonoBehaviour
         else
         {
             Debug.Log("Door is locked!");
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.ShowMessage("Collect all runes first!");
+            }
         }
     }
 } 
