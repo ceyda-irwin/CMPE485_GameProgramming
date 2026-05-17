@@ -17,8 +17,8 @@ public class PerformanceTestController : MonoBehaviour
 
     private readonly string[] levelNames = { "Low", "Medium", "High" };
 
-    private readonly int[] particleRateValues = { 30, 150, 1500 };
-    private readonly int[] maxParticleValues = { 300, 1500, 15000 };
+    private readonly int[] particleRateValues = { 30, 150, 15000 };
+    private readonly int[] maxParticleValues = { 300, 1500, 150000 };
 
     private readonly int[] activeLightCounts = { 1, 6, 20 };
 
